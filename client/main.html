@@ -1,0 +1,40 @@
+<head>
+    <title>Meteor_app</title>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <h1>Monthly Resolutions</h1>
+
+        <label class="hide-finished">
+            <input type="checkbox" class="{{hideFinished}}">
+            Hide Finished Resolutions
+        </label>
+
+        <form class="new-resolution">
+                <input type="text" name="title" placeholder="A new Resolution">
+                <input type="submit" value="Submit" class="submit">
+        </form>
+    </header>
+
+{{> resolution}}
+    {{> loginButtons}}
+</div>
+
+</body>
+
+
+<template name="resolution">
+    <ul>
+        {{#each resolutions}}
+
+        <li class = "{{#if checked}}checked{{/if}}">
+            <input type="checkbox" checked="{{checked}}" class="toggle-checked">
+            <span class="text">{{title}}</span>
+            <button class="delete">remove</button>
+        </li>
+        {{/each}}
+
+    </ul>
+</template>
