@@ -1,0 +1,16 @@
+
+
+<template name="resolution">
+    <ul>
+        {{#each resolutions}}
+
+        <li class = "{{#if checked}}checked{{/if}}">
+            <input type="checkbox" checked="{{checked}}" class="toggle-checked">
+            <span class="text">{{title}}</span>
+            <button class="delete">remove</button>
+        </li>
+
+        {{/each}}
+
+    </ul>
+</template>
