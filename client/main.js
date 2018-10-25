@@ -4,6 +4,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import {Resolutions} from "../api/mongo";
 
 import './main.html';
+import './resolution.js';
 
 /*
 Template.body.onCreated(function bodyOnCreated(){
@@ -11,30 +12,19 @@ Template.body.onCreated(function bodyOnCreated(){
 });
 */
 
-Template['resolution'].helpers({
-    /**
-     * show resolutions list
-     * @method resolutions()
-     */
-    resolutions(){
-        //const instance = Template.instance();
-        if (Session.get('hideStatus')){
-            return Resolutions.find({checked:{$ne:true}});
-        }
-        return Resolutions.find({});
-    },
-    hideFinished(){
-        return Session.get('hideStatus');
-    }
-});
 
 Template['body'].events({
     'submit .new-resolution'(events){
         //events.preventDefault();
-        console.log(events);
+
         const target = events.target;
         const value = target.title.value;
-
+        //const user = target.title.dataset.username;
+        /**
+         * attributes和DomStringMap（dataset）区别
+         * */
+        console.log(target.title.attributes); // all attributes
+        console.log(target.title.dataset); //JSON object of attributes start with data-
         Resolutions.insert({
             title: value,
             createAt:new Date()
@@ -53,17 +43,6 @@ Template['body'].events({
     }
 });
 
-
-
-Template['resolution'].events({
-    'click .toggle-checked'(){
-        Resolutions.update(this._id,{$set:{checked:!this.checked}});
-    },
-    'click button'(){
-        //console.log(this);
-        Resolutions.remove(this._id);
-    }
-});
 
 
 
