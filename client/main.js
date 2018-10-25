@@ -19,14 +19,14 @@ Template['body'].events({
 
         const target = events.target;
         const value = target.title.value;
-        const user = target.title.dataset.username;
+        //const user = target.title.dataset.username;
         /**
          * attributes和DomStringMap（dataset）区别
          * */
         console.log(target.title.attributes); // all attributes
         console.log(target.title.dataset); //JSON object of attributes start with data-
         Resolutions.insert({
-            title: `${value} by ${user}`,
+            title: value,
             createAt:new Date()
         })
 

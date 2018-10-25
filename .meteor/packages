@@ -25,3 +25,8 @@ stolinski:stylus-multi
 accounts-ui
 accounts-password
 accounts-twitter
+twitter-config-ui
+accounts-facebook
+facebook-config-ui
+google-config-ui
+accounts-google
