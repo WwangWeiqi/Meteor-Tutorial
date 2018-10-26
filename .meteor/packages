@@ -30,3 +30,5 @@ accounts-facebook
 facebook-config-ui
 google-config-ui
 accounts-google
+accounts-github
+github-config-ui

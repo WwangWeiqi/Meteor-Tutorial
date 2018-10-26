@@ -7,7 +7,7 @@
         <li class = "{{#if checked}}checked{{/if}}">
             <input type="checkbox" checked="{{checked}}" class="toggle-checked">
             <span class="text">{{title}}</span>
-            <button class="delete">remove</button>
+            {{#if currentUser}} <button class="delete">remove</button> {{/if}}
         </li>
 
         {{/each}}

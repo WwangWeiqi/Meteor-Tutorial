@@ -19,7 +19,8 @@ Template['body'].events({
 
         const target = events.target;
         const value = target.title.value;
-        //const user = target.title.dataset.username;
+        const user = target.title.dataset.username;
+        console.log(user);
         /**
          * attributes和DomStringMap（dataset）区别
          * */

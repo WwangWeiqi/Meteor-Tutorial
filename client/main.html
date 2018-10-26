@@ -13,9 +13,13 @@
             Hide Finished Resolutions
         </label>
         {{#if currentUser}}
-
+        <!-- currentUser.profile.name for OAuth login, currentUser.username for registered user login -->
         <form class="new-resolution">
-                <input type="text" name="title" placeholder="A new Resolution"  data-test="test">
+                <input type="text" name="title" placeholder="A new Resolution"  data-test="test"
+                       data-username = "{{#if currentUser.username}}
+                                             {{currentUser.username}}
+                                         {{else}}
+                                             {{currentUser.profile.name}}{{/if}}">
                 <input type="submit" value="Submit" class="submit">
         </form>
         {{/if}}
