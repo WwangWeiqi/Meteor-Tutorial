@@ -26,10 +26,8 @@ Template['body'].events({
          * */
         console.log(target.title.attributes); // all attributes
         console.log(target.title.dataset); //JSON object of attributes start with data-
-        Resolutions.insert({
-            title: value,
-            createAt:new Date()
-        })
+
+        Meteor.call("addResolution",value);
 
         target.title.value='';
         return false;

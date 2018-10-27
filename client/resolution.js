@@ -22,11 +22,11 @@ Template['resolution'].helpers({
 
 Template['resolution'].events({
     'click .toggle-checked'(){
-        Resolutions.update(this._id,{$set:{checked:!this.checked}});
+        Meteor.call("updateResolution",this._id,this.checked);
     },
     'click button'(){
         //console.log(this);
-        Resolutions.remove(this._id);
+        Meteor.call("deleteResolution",this.id);
     }
 });
 
