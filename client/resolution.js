@@ -18,23 +18,30 @@ Template['resolution'].helpers({
         }
         return Resolutions.find({});
     },
-    hideFinished(){
-        return Session.get('hideStatus');
+
+    isOwner(){
+        return this.owner === Meteor.userId();
     }
+
 });
 
 
 Template['resolution'].events({
     'click .toggle-checked'(){
+
         Meteor.call("updateResolution",this._id,this.checked);
     },
-    'click button'(){
+    'click button.delete'(){
         //console.log(this);
         Meteor.call("deleteResolution",this._id);
-    }
+    },
+    'click .toggle-private'(){
+        Meteor.call("setPrivate",this._id,this.private);
+    },
 });
 
 Accounts.ui.config({
     passwordSignupFields:"USERNAME_ONLY"
 })
+
 

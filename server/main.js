@@ -10,5 +10,11 @@ Meteor.startup(() => {
 
 import '../api/mongo.js';
 Meteor.publish('Resolutions',function (){
-    return Resolutions.find();
+    console.log(Meteor.userId() + "  " + this.userId);
+    return Resolutions.find({
+        $or:[
+            {private:{$ne:true}},
+            {owner:this.userId}
+        ]
+    });
 })

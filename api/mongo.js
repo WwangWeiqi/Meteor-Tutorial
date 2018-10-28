@@ -15,7 +15,8 @@ Meteor.methods({
     addResolution(value){
         Resolutions.insert({
             title: value,
-            createAt:new Date()
+            createAt:new Date(),
+            owner:Meteor.userId()
         });
     },
     /**
@@ -23,6 +24,9 @@ Meteor.methods({
      * @method deleteResolution()
      * */
     deleteResolution(id){
+        if (this.userId !== Meteor.userId()){
+            throw new Meteor.Error('not-authorized');
+        }
         Resolutions.remove(id);
     },
     /**
@@ -31,7 +35,18 @@ Meteor.methods({
      * @method updateResolution()
      */
     updateResolution(id,checked){
+        console.log(this.userId);
+        console.log(Meteor.userId());
         Resolutions.update(id,{$set:{checked:!checked}});
     },
+    /**
+     * toggle private/public
+     *
+     * @method setPrivate()
+     */
+    setPrivate(id,private){
+
+        Resolutions.update(id,{$set:{private:!private}});
+    }
 
 });

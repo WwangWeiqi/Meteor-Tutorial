@@ -11,7 +11,11 @@ Template.body.onCreated(function bodyOnCreated(){
     this.state = new ReactiveDict();
 });
 */
-
+Template['body'].helpers({
+    hideFinished(){
+        return Session.get('hideStatus');
+    }
+})
 
 Template['body'].events({
     'submit .new-resolution'(events){
