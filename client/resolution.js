@@ -2,6 +2,10 @@ import { Template } from 'meteor/templating';
 import './resolution.html';
 import {Resolutions} from "../api/mongo";
 
+Template['resolution'].onCreated(function tmpOncreate(){
+    Meteor.subscribe('Resolutions');
+})
+
 Template['resolution'].helpers({
     /**
      * show resolutions list
@@ -26,7 +30,7 @@ Template['resolution'].events({
     },
     'click button'(){
         //console.log(this);
-        Meteor.call("deleteResolution",this.id);
+        Meteor.call("deleteResolution",this._id);
     }
 });
 
